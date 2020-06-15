@@ -71,7 +71,11 @@ func (s *Server) acceptLoop() {
 				CipherSuites:             s.cipherSuite,
 				PreferServerCipherSuites: s.PreferServerCipher,
 				SessionTicketsDisabled:   !s.sessionTicket,
-				NextProtos:               s.alpn,
+				NextProtos:               nil, //s.alpn,
+				CurvePreferences: []tls.CurveID{  
+					tls.CurveP256,  
+					tls.X25519, // Go 1.8 only  
+				},  				
 				KeyLogWriter:             s.keyLogger,
 				GetCertificate: func(hello *tls.ClientHelloInfo) (*tls.Certificate, error) {
 					if s.verifySNI && hello.ServerName != s.sni {
