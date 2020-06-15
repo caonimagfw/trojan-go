@@ -67,11 +67,13 @@ func (s *Server) acceptLoop() {
 		go func(conn net.Conn) {
 			sniVerified := true
 			tlsConfig := &tls.Config{
+				TLSVersMin: VersionTLS13,
+				TLSVersMax: VersionTLS13,				
 				Certificates:             s.keyPair,
 				CipherSuites:             s.cipherSuite,
 				PreferServerCipherSuites: s.PreferServerCipher,
 				SessionTicketsDisabled:   !s.sessionTicket,
-				NextProtos:               nil, //s.alpn,
+				NextProtos:               s.alpn,
 				CurvePreferences: []tls.CurveID{  
 					tls.CurveP256,  
 					tls.X25519, // Go 1.8 only  

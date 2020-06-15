@@ -30,7 +30,7 @@ func (o *Option) Handle() error {
 	} else {
 		log.Fatal("unsupported filename suffix", *o.path, ". use .yaml or .json instead.")
 	}
-	log.Info("trojan-go", constant.Version, "initializing")
+	log.Info("trojan-go", constant.Version, "initializing .@@.")
 	proxy, err := NewProxyFromConfigData(data, isJSON)
 	if err != nil {
 		log.Fatal(err)

@@ -43,7 +43,8 @@ for PLATFORM in $PLATFORMS; do
 done
 
 # arm
-PLATFORMS_ARM="windows linux freebsd netbsd"
+#PLATFORMS_ARM="windows linux freebsd netbsd"
+PLATFORMS_ARM="windows linux"
 for GOOS in $PLATFORMS_ARM; do
   # build for each ARM version
   GOARCH="arm"
