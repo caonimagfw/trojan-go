@@ -1,8 +1,19 @@
 #!/bin/bash
 
+PLATFORMS="darwin/amd64 darwin/386"
+PLATFORMS="$PLATFORMS windows/amd64 windows/386"
+PLATFORMS="$PLATFORMS windows/arm"
 PLATFORMS="$PLATFORMS linux/amd64 linux/386"
-PLATFORMS="$PLATFORMS linux/mipsle"
-
+PLATFORMS="$PLATFORMS linux/ppc64 linux/ppc64le"
+PLATFORMS="$PLATFORMS linux/mips64 linux/mips64le"
+PLATFORMS="$PLATFORMS linux/mips linux/mipsle"
+PLATFORMS="$PLATFORMS linux/arm64 linux/arm"
+PLATFORMS="$PLATFORMS linux/s390x"
+PLATFORMS="$PLATFORMS dragonfly/amd64"
+PLATFORMS="$PLATFORMS openbsd/arm64 openbsd/arm"
+PLATFORMS="$PLATFORMS openbsd/amd64 openbsd/386"
+PLATFORMS="$PLATFORMS freebsd/amd64 freebsd/386"
+PLATFORMS="$PLATFORMS freebsd/arm64 freebsd/arm"
 
 type setopt >/dev/null 2>&1
 
@@ -42,7 +53,7 @@ for PLATFORM in $PLATFORMS; do
 done
 
 # arm
-PLATFORMS_ARM="linux"
+PLATFORMS_ARM="windows linux freebsd netbsd"
 for GOOS in $PLATFORMS_ARM; do
   # build for each ARM version
   GOARCH="arm"
